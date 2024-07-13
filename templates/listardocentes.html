@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Docentes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lista de Docentes</h1>
+        <a href="/docentes/nuevo" class="btn btn-primary mb-3">Agregar Docente</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Documento</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="docente : ${docentes}">
+                    <td th:text="${docente.id}"></td>
+                    <td th:text="${docente.nombre}"></td>
+                    <td th:text="${docente.documento}"></td>
+                    <td th:text="${docente.correo}"></td>
+                    <td>
+                        <a th:href="@{/docentes/editar/{id}(id=${docente.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/docentes/eliminar/{id}(id=${docente.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-secondary mt-3">Volver al Inicio</a>
+    </div>
+</body>
+</html>
